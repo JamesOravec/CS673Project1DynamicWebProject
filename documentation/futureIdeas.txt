@@ -1,0 +1,10 @@
+02052012 JAO
+	Future Updates:
+		Add network table to the db, this will allow to keep info such as GPS coordinate of the network (used for GPS perimiter).
+			Meaning that a user can have more than one personal network and that they wake up when he goes to them.
+		Also add a flag for the system, which is for "automated sleep" or "manual sleep"
+			This will be used and tracked to determine if the commands need to be automated or not.
+		Also add a flag for the system, which is for "automated wake" or "manual wake"
+			This will be used and tracked to determine if the commands need to be automated or not.
+		Create a java program that gives the computer's IP and MAC.
+			

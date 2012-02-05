@@ -1,0 +1,10 @@
+02052012 JAO:
+	
+	The database is small and simple at this point.
+	
+	We have a user table and a system table. There is a foriegn key in the system table that will contain a userID.
+	
+	The user table contains a userID, username and password. This information is currently stored in the db as plain text.
+	
+	Future revsions can add additional tables and make the plain text in hash values, etc.
+	

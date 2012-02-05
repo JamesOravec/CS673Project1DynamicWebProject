@@ -29,4 +29,14 @@
     <servlet-name>jdbcDemoServlet</servlet-name>
     <url-pattern>/jdbcDemoServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Controller</display-name>
+    <servlet-name>Controller</servlet-name>
+    <servlet-class>de.vogella.wtp.jsp.controller.Controller</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Controller</servlet-name>
+    <url-pattern>/Controller</url-pattern>
+  </servlet-mapping>
 </web-app>

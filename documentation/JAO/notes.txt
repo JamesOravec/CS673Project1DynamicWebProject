@@ -1,0 +1,2 @@
+cd ~/workspace/CS673Project1DynamicWebProject
+git push -u origin master

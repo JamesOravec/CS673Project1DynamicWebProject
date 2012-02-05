@@ -23,7 +23,7 @@
  * Since we can get this working in java, we should be able to make it work easily with a servlet/jsp.
  */
 
-package edu.unlv.cs673.echoteam.project1.dao;
+package com.jamesoravec.samplecode.examples.jdbc;
 
 import java.sql.*;
 

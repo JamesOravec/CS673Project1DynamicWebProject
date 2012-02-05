@@ -1,4 +1,4 @@
-package edu.unlv.cs673.echoteam.servlet;
+package com.jamesoravec.samplecode.examples.jdbc;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import edu.unlv.cs673.echoteam.project1.dao.JdbcDemo;
 
 /**
  * Servlet implementation class jdbcDemoServlet

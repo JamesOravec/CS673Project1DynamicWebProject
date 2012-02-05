@@ -1,0 +1,25 @@
+02042012 JAO
+	* login.jsp - what Shawn is working on
+	* list.jsp - a list of systems belonging to the user. The user will see links which they can add/edit/delete systems from their list.
+	* add.jsp - Add a new system to the user's list.
+	* edit.jsp - Edit an existing user system, e.g. changing the IP address and/or port.
+	* signup.jsp - Add new users to db.		
+
+02052012 JAO
+	
+	User starts at index.jsp
+		They can then either create an account, which will take them to signup.jsp
+			signup.asp posts to userAdd.jsp
+		Or they can go to login.jsp
+			Bad logins will take you back to login.jsp
+			Good logins will take you to list.jsp
+	
+	computerList.jsp lists all of the computers for the user. The user can add/edit/delete systems from the list.
+	
+	Action Summaries:
+		Edit - computerEdit.jsp is used to edit existing computer records
+		Add - computerAdd.jsp is used to add new computer records
+		List - computerList.jsp will issue a command to delete the selected record, and will refresh to itself.
+
+	To help give a consistent feel, we created teh footer.inc and header.inc
+	Future development will require cleaning up the model.
