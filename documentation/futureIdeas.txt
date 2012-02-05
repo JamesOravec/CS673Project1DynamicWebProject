@@ -7,4 +7,4 @@
 		Also add a flag for the system, which is for "automated wake" or "manual wake"
 			This will be used and tracked to determine if the commands need to be automated or not.
 		Create a java program that gives the computer's IP and MAC.
-			
+		Add checks to make sure user doesn't already exist in db.

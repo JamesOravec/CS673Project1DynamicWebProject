@@ -8,10 +8,10 @@ import java.sql.Statement;
 
 public class DAO{
 	static String dbUrl = "jdbc:mysql://localhost/echoTeam";
-	static String query = "";
+	public static String query = "";
 	static String user = "root";
 	static String password = "password";
-	static Connection con = null;
+	public static Connection con = null;
 	
 	/**
 	 * Creates DB connection
@@ -66,7 +66,15 @@ public class DAO{
 	 */
 	public void insertQuery(String query){
 		// TODO: Add checks that query is of "insert" type.
-		DAO.query = query;
+		try {
+			Statement stmt = null;
+			DAO.query = query;
+			stmt.executeQuery(DAO.query);
+			DAO.query = "commit;";
+			stmt.executeQuery(DAO.query);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**

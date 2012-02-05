@@ -1,0 +1,20 @@
+Parameterized queries: 
+	http://www.javaworld.com/javaworld/jw-04-2007/jw-04-jdbc.html
+	Java Query
+		http://docs.oracle.com/javaee/5/api/javax/persistence/Query.html
+		http://www.objectdb.com/java/jpa/query/parameter
+	https://www.owasp.org/index.php/Preventing_SQL_Injection_in_Java		
+
+Servlet, JSP and War tutorial
+	http://www.vogella.de/articles/EclipseWTP/article.html#configuration
+	
+Git
+	github.com
+	
+JSP Redirect:
+	http://www.exampledepot.com/egs/javax.servlet.jsp/redirect.html	
+
+SQL
+	Insert
+		http://www.w3schools.com/sql/sql_insert.asp
+
