@@ -71,12 +71,34 @@ public class ComputerDAO {
 		return results;
 	}
 	
-	public void insertComputer() {
-		// TODO Auto-generated method stub
+	public void insertComputer(String userId, String systemIP, String systemDNS, String systemPort, String systemMAC) throws SQLException {
+		@SuppressWarnings("unused")
+		DAO myDao = new DAO();
+		String query = "";
+		query = "INSERT INTO computers (userId, computerIP, computerPort, computerMAC) Values (?, ?, ?, ?, ?);";
+		PreparedStatement p = null;
+		p = DAO.con.prepareStatement(query);
+		p.setString(1, userId);
+		p.setString(2, systemIP);
+		p.setString(3, systemDNS);
+		p.setString(4, systemPort);
+		p.setString(5, systemMAC);
+		System.out.println(p.toString());
+		p.execute();
+		query = "commit;";
+		p = DAO.con.prepareStatement(query);
+		p.execute();
+		DAO.close();
 	}
 	
-	public void deleteComputerById() {
-		// TODO Auto-generated method stub
+	public void deleteComputerById(int computerId) throws SQLException {
+		@SuppressWarnings("unused")
+		DAO myDao = new DAO();
+		String query = "DELETE FROM computers WHERE computerId = ?";
+		PreparedStatement p = DAO.con.prepareStatement(query);
+		p.setInt(1, computerId);
+		p.execute();
+		DAO.close();
 	}
 	
 	public void updateComptuerById() {

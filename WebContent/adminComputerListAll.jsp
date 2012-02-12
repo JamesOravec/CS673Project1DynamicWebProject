@@ -11,41 +11,42 @@
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <jsp:include page="header.inc"></jsp:include>
+<jsp:include page="verifyAdminLogin.jsp"></jsp:include>
 
 <center>
 	<form method="GET" action='ComputerController' name="listall">
 	<table border="1">
 	<%
-			ComputerDAO computerDao = new ComputerDAO();
-			List<ComputerHelper> results = computerDao.selectAllComputers();
-	
-			%>
-			<tr>
-				<th>&nbsp; &nbsp; &nbsp; Select Record &nbsp; &nbsp; &nbsp; </th>
-				<th>&nbsp; &nbsp; &nbsp; userId &nbsp; &nbsp; &nbsp; </th>
-				<th>&nbsp; &nbsp; &nbsp; computerIP &nbsp; &nbsp; &nbsp; </th>
-				<th>&nbsp; &nbsp; &nbsp; networkId &nbsp; &nbsp; &nbsp; </th>
-				<th>&nbsp; &nbsp; &nbsp; computerPort &nbsp; &nbsp; &nbsp; </th>
-				<th>&nbsp; &nbsp; &nbsp; computerMAC &nbsp; &nbsp; &nbsp; </th>
-			</tr>
-			<%
-			for(ComputerHelper ch: results){
-				out.println("<tr>");
-					// Check box for Primary Key (ComputerId)
-					out.println("<td><input type=\"checkbox\" name=\"" + ch.getComputerId() + "\" />");
-					out.println("</td><td>");
-					out.println(ch.getUserId());
-					out.println("</td><td>");
-					out.println(ch.getComputerIP());
-					out.println("</td><td>");
-					out.println(ch.getNetworkId());
-					out.println("</td><td>");
-					out.println(ch.getComputerPort());
-					out.println("</td><td>");
-					out.println(ch.getComputerMAC());
-					out.println("</td>");
-				out.println("</tr>");
-			}
+		ComputerDAO computerDao = new ComputerDAO();
+		List<ComputerHelper> results = computerDao.selectAllComputers();
+
+		%>
+		<tr>
+			<th>&nbsp; &nbsp; &nbsp; Select Record &nbsp; &nbsp; &nbsp; </th>
+			<th>&nbsp; &nbsp; &nbsp; userId &nbsp; &nbsp; &nbsp; </th>
+			<th>&nbsp; &nbsp; &nbsp; computerIP &nbsp; &nbsp; &nbsp; </th>
+			<th>&nbsp; &nbsp; &nbsp; networkId &nbsp; &nbsp; &nbsp; </th>
+			<th>&nbsp; &nbsp; &nbsp; computerPort &nbsp; &nbsp; &nbsp; </th>
+			<th>&nbsp; &nbsp; &nbsp; computerMAC &nbsp; &nbsp; &nbsp; </th>
+		</tr>
+		<%
+		for(ComputerHelper ch: results){
+			out.println("<tr>");
+				// Check box for Primary Key (ComputerId)
+				out.println("<td><input type=\"checkbox\" name=\"" + ch.getComputerId() + "\" />");
+				out.println("</td><td>");
+				out.println(ch.getUserId());
+				out.println("</td><td>");
+				out.println(ch.getComputerIP());
+				out.println("</td><td>");
+				out.println(ch.getNetworkId());
+				out.println("</td><td>");
+				out.println(ch.getComputerPort());
+				out.println("</td><td>");
+				out.println(ch.getComputerMAC());
+				out.println("</td>");
+			out.println("</tr>");
+		}
 	%>
 	</table>
 	<p>

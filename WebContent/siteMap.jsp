@@ -13,6 +13,10 @@
 
 <a href="aaaSetTempSessionVar.jsp">aaaSetTempSessionVar.jsp</a><BR>
 <a href="adminComputerListAll.jsp">adminComputerListAll.jsp</a><BR>
+<a href="adminUserChanged.jsp">adminUserChanged.jsp</a><BR>
+<a href="adminUserDelete.jsp">adminUserDelete.jsp</a><BR>
+<a href="adminUserEdit.jsp">adminUserEdit.jsp</a><BR>
+<a href="adminUserListAll.jsp">adminUserListAll.jsp</a><BR>
 <a href="computerAdd.jsp">computerAdd.jsp</a><BR>
 <a href="computerChanged.jsp">computerChanged.jsp</a><BR>
 <a href="computerDelete.jsp">computerDelete.jsp</a><BR>
@@ -23,9 +27,5 @@
 <a href="signup.jsp">signup.jsp</a><BR>
 <a href="siteMap.jsp">siteMap.jsp</a><BR>
 <a href="userAdd.jsp">userAdd.jsp</a><BR>
-<a href="userChanged.jsp">userChanged.jsp</a><BR>
-<a href="userDelete.jsp">userDelete.jsp</a><BR>
-<a href="userEdit.jsp">userEdit.jsp</a><BR>
-<a href="userListAll.jsp">userListAll.jsp</a><BR>
 
 <jsp:include page="footer.inc"></jsp:include>

@@ -6,6 +6,8 @@
 <html>
 <body>
 	<jsp:include page="header.inc"></jsp:include>
+	<jsp:include page="verifyLogin.jsp"></jsp:include>
+	
 	<center>
 		<form method="GET" action="computerChanged.jsp" name="listall">
 			<table border="1">

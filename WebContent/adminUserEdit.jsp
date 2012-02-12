@@ -6,8 +6,10 @@
 <html>
 <body>
 <jsp:include page="header.inc"></jsp:include>
+<jsp:include page="verifyAdminLogin.jsp"></jsp:include>
+
 <center>
-	<form method="GET" action="userChanged.jsp" name="listall">
+	<form method="GET" action="adminUserChanged.jsp" name="listall">
 		<table border="1">
 			<tr>
 				<th>UserName</th>
