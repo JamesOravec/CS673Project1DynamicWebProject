@@ -45,7 +45,7 @@
 	%>
 	</table>
 	<p>
-		<input type="add" value="Add New User" /> &nbsp;
+		<input type="submit" value="Add New User" /> &nbsp;
 		<input type="submit" name="delete" value="delete" /> &nbsp; 
 		<input type="submit" name="edit" value="edit" /> 
 	</p>

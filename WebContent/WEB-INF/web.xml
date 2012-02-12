@@ -39,4 +39,24 @@
     <servlet-name>Controller</servlet-name>
     <url-pattern>/Controller</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Login</display-name>
+    <servlet-name>Login</servlet-name>
+    <servlet-class>edu.shawncannon.login.Login</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Login</servlet-name>
+    <url-pattern>/Login</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LoginShawnOther</display-name>
+    <servlet-name>LoginShawnOther</servlet-name>
+    <servlet-class>echoteam.LoginShawnOther</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginShawnOther</servlet-name>
+    <url-pattern>/LoginShawnOther</url-pattern>
+  </servlet-mapping>
 </web-app>
