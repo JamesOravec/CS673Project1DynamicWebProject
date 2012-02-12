@@ -99,4 +99,14 @@
     <servlet-name>UserDAO</servlet-name>
     <url-pattern>/UserDAO</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MagicPacketServlet</display-name>
+    <servlet-name>MagicPacketServlet</servlet-name>
+    <servlet-class>edu.unlv.cs673.echoteam.magicpacket.MagicPacketServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MagicPacketServlet</servlet-name>
+    <url-pattern>/MagicPacketServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -19,7 +19,7 @@
 	<table border="1">
 	<%
 		UserDAO userDao = new UserDAO();
-		List<UserHelper> results = userDao.selectAllComputers();
+		List<UserHelper> results = userDao.selectAllUsers();
 	%>
 		<tr>
 			<th>&nbsp; &nbsp; &nbsp; Select Record &nbsp; &nbsp; &nbsp; </th>
@@ -28,23 +28,23 @@
 			<th>&nbsp; &nbsp; &nbsp; userPassword &nbsp; &nbsp; &nbsp; </th>
 		</tr>
 		<%					
-		for(UserHelper ch: results){
+		for(UserHelper uh: results){
 			out.println("<tr>");
 				// Check box for Primary Key (ComputerId)
-				out.println("<td><input type=\"checkbox\" name=\"" + ch.getUserId() + "\" />");
+				out.println("<td><input type=\"checkbox\" name=\"" + uh.getUserId() + "\" />");
 				out.println("</td><td>");
-				out.println(ch.getUserId());
+				out.println(uh.getUserId());
 				out.println("</td><td>");
-				out.println(ch.getUserName());
+				out.println(uh.getUserName());
 				out.println("</td><td>");
-				out.println(ch.getUserPassword());
+				out.println(uh.getUserPassword());
 				out.println("</td>");
 			out.println("</tr>");
 		}
 	%>
 	</table>
 	<p>
-		<input type="submit" value="Add New User" /> &nbsp;
+		<input type="submit" name="add" value="Add New User" /> &nbsp;
 		<input type="submit" name="delete" value="delete" /> &nbsp; 
 		<input type="submit" name="edit" value="edit" /> 
 	</p>

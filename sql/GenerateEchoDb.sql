@@ -37,15 +37,15 @@ commit;
 INSERT INTO users (`userName`, `userPassword`) VALUES ('root', 'password');
 commit;
 
-INSERT INTO computers (userId, networkId, computerIP, computerPort, computerMAC) Values (1, 1, '192.168.1.111','1111','fe80::6cd2:e54:d7d9:f337');
-INSERT INTO computers (userId, networkId, computerIP, computerPort, computerMAC) Values (1, 1, '192.168.1.112','2222','fe80::6cd2:e54:d7d9:f337');
-INSERT INTO computers (userId, networkId, computerIP, computerPort, computerMAC) Values (1, 1, '192.168.1.113','3333','fe80::6cd2:e54:d7d9:f337');
-INSERT INTO computers (userId, networkId, computerIP, computerPort, computerMAC) Values (1, 1, '192.168.1.114','4444','fe80::6cd2:e54:d7d9:f337');
+INSERT INTO computers (userId, networkId, computerIP, computerPort, computerMAC) Values (1, 1, '192.168.1.111','1111','00:24:1D:1C:D1:1B');
+INSERT INTO computers (userId, networkId, computerIP, computerPort, computerMAC) Values (1, 1, '192.168.1.112','2222','00:24:1D:1C:D1:1B');
+INSERT INTO computers (userId, networkId, computerIP, computerPort, computerMAC) Values (1, 1, '192.168.1.113','3333','00:24:1D:1C:D1:1B');
+INSERT INTO computers (userId, networkId, computerIP, computerPort, computerMAC) Values (1, 1, '192.168.1.114','4444','00:24:1D:1C:D1:1B');
 
-INSERT INTO computers (userId, networkId, computerIP, computerPort, computerMAC) Values (2, 1, '192.168.1.111','1111','fe80::6cd2:e54:d7d9:f337');
-INSERT INTO computers (userId, networkId, computerIP, computerPort, computerMAC) Values (2, 1, '192.168.1.112','2222','fe80::6cd2:e54:d7d9:f337');
-INSERT INTO computers (userId, networkId, computerIP, computerPort, computerMAC) Values (2, 1, '192.168.1.113','3333','fe80::6cd2:e54:d7d9:f337');
-INSERT INTO computers (userId, networkId, computerIP, computerPort, computerMAC) Values (2, 1, '192.168.1.114','4444','fe80::6cd2:e54:d7d9:f337');
+INSERT INTO computers (userId, networkId, computerIP, computerPort, computerMAC) Values (2, 1, '192.168.1.111','1111','00:24:1D:1C:D1:1B');
+INSERT INTO computers (userId, networkId, computerIP, computerPort, computerMAC) Values (2, 1, '192.168.1.112','2222','00:24:1D:1C:D1:1B');
+INSERT INTO computers (userId, networkId, computerIP, computerPort, computerMAC) Values (2, 1, '192.168.1.113','3333','00:24:1D:1C:D1:1B');
+INSERT INTO computers (userId, networkId, computerIP, computerPort, computerMAC) Values (2, 1, '192.168.1.114','4444','00:24:1D:1C:D1:1B');
 commit;
 
 insert into networks (userId, networkGPS, networkPerimeter) Values (1, '123.123,345.345', 1);

@@ -15,7 +15,7 @@ public class UserDAO {
 	// collection of ComputerHelper objects
 	
 
-	public List<UserHelper> selectAllComputers() {
+	public List<UserHelper> selectAllUsers() {
 		List<UserHelper> results = new ArrayList<UserHelper>();
 		DAO myDao = new DAO();
 		String query = "SELECT userId, userName, userPassword FROM users;";
@@ -47,7 +47,7 @@ public class UserDAO {
 		return results;
 	}
 	
-	public void insertComputer(String userName, String userPassword) throws SQLException {
+	public void insertUser(String userName, String userPassword) throws SQLException {
 		@SuppressWarnings("unused")
 		DAO myDao = new DAO();
 		String query = "";
@@ -64,8 +64,14 @@ public class UserDAO {
 		DAO.close();
 	}
 	
-	public void deleteComputerById() {
-		// TODO Auto-generated method stub
+	public void deleteUserById(int userId) throws SQLException {
+		@SuppressWarnings("unused")
+		DAO myDao = new DAO();
+		String query = "DELETE FROM users WHERE userId = ?";
+		PreparedStatement p = DAO.con.prepareStatement(query);
+		p.setInt(1, userId);
+		p.execute();
+		DAO.close();
 	}
 	
 	public void updateComptuerById() {

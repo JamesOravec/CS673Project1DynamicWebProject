@@ -28,6 +28,8 @@
 			<th>&nbsp; &nbsp; &nbsp; networkId &nbsp; &nbsp; &nbsp; </th>
 			<th>&nbsp; &nbsp; &nbsp; computerPort &nbsp; &nbsp; &nbsp; </th>
 			<th>&nbsp; &nbsp; &nbsp; computerMAC &nbsp; &nbsp; &nbsp; </th>
+			<th>&nbsp; &nbsp; &nbsp; Send Sleep &nbsp; &nbsp; &nbsp; </th>
+			<th>&nbsp; &nbsp; &nbsp; Send WakeOnLAN &nbsp; &nbsp; &nbsp; </th>
 		</tr>
 		<%
 		for(ComputerHelper ch: results){
@@ -42,6 +44,10 @@
 				out.println(ch.getComputerPort());
 				out.println("</td><td>");
 				out.println(ch.getComputerMAC());
+				out.println("</td><td>");
+				out.println("<a href=\"\">Send Sleep Command</a>");
+				out.println("</td><td>");
+				out.println("<a href=\"magicPacketSend.jsp?host=" + ch.getComputerIP() + "&macAddress=" + ch.getComputerMAC() + "\">Send WoL Packet</a>");
 				out.println("</td>");
 			out.println("</tr>");
 		}
