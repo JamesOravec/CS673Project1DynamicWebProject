@@ -1,26 +1,41 @@
 package edu.unlv.cs673.echoteam;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Properties;
 
 public class DAO{
-	static String dbUrl = "jdbc:mysql://localhost/echoTeam";
+	static private String dbUrl = "";
 	public static String query = "";
-	static String user = "root";
-	static String password = "password";
+	static private String user = "";
+	static private String password = "";
 	public static Connection con = null;
 	
 	/**
 	 * Creates DB connection
 	 */
 	public DAO() {
-		// Connect to DB
 		try {
+			// Get db connection info from property file.
+			Properties prop = new Properties();
+			// load a properties file
+			prop.load(new FileInputStream("config.properties"));
+
+			// get the property value and print it out
+			dbUrl=prop.getProperty("dbUrl");
+			user=prop.getProperty("user");
+			password=prop.getProperty("password");
+			
+			// Connect to DB
 			Class.forName("com.mysql.jdbc.Driver");
 			con = DriverManager.getConnection(dbUrl, user, password);
+		} catch (IOException ex) {
+			ex.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {

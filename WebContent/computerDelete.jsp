@@ -7,25 +7,24 @@ import="edu.unlv.cs673.echoteam.DAO,java.io.PrintWriter,java.sql.*,javax.persist
 <jsp:include page="header.inc"></jsp:include>
 
 <%
-DAO myDao = new DAO();
-int id = 0;
-String query = "DELETE FROM echosystems WHERE systemId = ?";
-PreparedStatement p = DAO.con.prepareStatement(query);
-String select[] = request.getParameterValues("systemId");
-
-if (select != null) {
-	for (int i = 0; i < select.length; i++) {
-		id = Integer.valueOf(select[i]);
-		p.setInt(1, id);
-		p.execute();
+	DAO myDao = new DAO();
+	int id = 0;
+	String query = "DELETE FROM echosystems WHERE systemId = ?";
+	PreparedStatement p = DAO.con.prepareStatement(query);
+	String select[] = request.getParameterValues("systemId");
+	
+	if (select != null) {
+		for (int i = 0; i < select.length; i++) {
+			id = Integer.valueOf(select[i]);
+			p.setInt(1, id);
+			p.execute();
+		}
+		out.println("<center><b>Systems(s) Removed Successfully</b><BR> <a href=\"computerListAll.jsp\">Return</a></center>");
+		DAO.close();
+	}else{
+		out.println("<center><b>No Systems Removed</b><BR> <a href=\"computerListAll.jsp\">Return</a></center>");
 	}
-	%>
-<center>
-	<b>Systems(s) Removed Successfully</b><BR> <a href="computerListAll.jsp">Return</a>
-</center>
-<%
-DAO.close();
-}
+	
 %>
 
 <jsp:include page="footer.inc"></jsp:include>

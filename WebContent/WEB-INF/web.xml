@@ -59,4 +59,44 @@
     <servlet-name>LoginShawnOther</servlet-name>
     <url-pattern>/LoginShawnOther</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ComputerController</display-name>
+    <servlet-name>ComputerController</servlet-name>
+    <servlet-class>edu.unlv.cs673.echoteam.servlet.ComputerController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ComputerController</servlet-name>
+    <url-pattern>/ComputerController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UserController</display-name>
+    <servlet-name>UserController</servlet-name>
+    <servlet-class>edu.unlv.cs673.echoteam.servlet.UserController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserController</servlet-name>
+    <url-pattern>/UserController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ComputerDAO</display-name>
+    <servlet-name>ComputerDAO</servlet-name>
+    <servlet-class>edu.unlv.cs673.echoteam.ComputerDAO</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ComputerDAO</servlet-name>
+    <url-pattern>/ComputerDAO</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UserDAO</display-name>
+    <servlet-name>UserDAO</servlet-name>
+    <servlet-class>edu.unlv.cs673.echoteam.UserDAO</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserDAO</servlet-name>
+    <url-pattern>/UserDAO</url-pattern>
+  </servlet-mapping>
 </web-app>

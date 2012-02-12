@@ -17,7 +17,6 @@
 	
 			// The following is the output for select query.
 			ResultSet rs = myDao.readQuery("SELECT * FROM echosystems;");
-			StringBuilder sb = new StringBuilder();
 			try {
 				%>
 				<tr>
@@ -64,7 +63,7 @@
 	%>
 	</table>
 	<p>
-		<input type="add" value="Add System" /> &nbsp;
+		<input type="submit" name="add" value="Add System" /> &nbsp;
 		<input type="submit" name="delete" value="Delete System" /> &nbsp; 
 		<input type="submit" name="edit" value="Edit System" />  
 	</p>
