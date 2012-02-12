@@ -1,7 +1,9 @@
 package edu.unlv.cs673.echoteam;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -20,17 +22,18 @@ public class DAO{
 	 * Creates DB connection
 	 */
 	public DAO() {
+		// Get db connection info from property file.
+		Properties prop = new Properties();
 		try {
-			// Get db connection info from property file.
-			Properties prop = new Properties();
 			// load a properties file
-			prop.load(new FileInputStream("config.properties"));
+			InputStream in = getClass().getResourceAsStream("/config.properties");
+			prop.load(in);
 
 			// get the property value and print it out
-			dbUrl=prop.getProperty("dbUrl");
-			user=prop.getProperty("user");
-			password=prop.getProperty("password");
-			
+			dbUrl = prop.getProperty("dbUrl");
+			user = prop.getProperty("user");
+			password = prop.getProperty("password");
+
 			// Connect to DB
 			Class.forName("com.mysql.jdbc.Driver");
 			con = DriverManager.getConnection(dbUrl, user, password);

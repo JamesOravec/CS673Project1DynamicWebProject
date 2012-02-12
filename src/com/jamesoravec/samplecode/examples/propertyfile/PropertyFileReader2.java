@@ -15,9 +15,9 @@ public class PropertyFileReader2 {
 			prop.load(new FileInputStream("config.properties"));
 
 			// get the property value and print it out
-			System.out.println(prop.getProperty("database"));
-			System.out.println(prop.getProperty("dbuser"));
-			System.out.println(prop.getProperty("dbpassword"));
+			System.out.println(prop.getProperty("dbUrl"));
+			System.out.println(prop.getProperty("user"));
+			System.out.println(prop.getProperty("password"));
 
 		} catch (IOException ex) {
 			ex.printStackTrace();

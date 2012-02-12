@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 	
-<%@ page import="edu.unlv.cs673.echoteam.DAO,
+<%@ page import="edu.unlv.cs673.echoteam.ComputerDAO,
+				edu.unlv.cs673.echoteam.helpers.ComputerHelper,
+				java.util.List,
+				java.util.ArrayList,
 				java.io.PrintWriter,
 				java.sql.ResultSet,
 				java.sql.SQLException" %>
@@ -13,53 +16,33 @@
 	<form method="GET" action='ComputerController' name="listall">
 	<table border="1">
 	<%
-			DAO myDao = new DAO();
+			ComputerDAO computerDao = new ComputerDAO();
+			List<ComputerHelper> results = computerDao.selectAllComputers();
 	
-			// The following is the output for select query.
-			ResultSet rs = myDao.readQuery("SELECT * FROM echosystems;");
-			try {
-				%>
-				<tr>
-					<th>&nbsp; &nbsp; &nbsp; Select Record &nbsp; &nbsp; &nbsp; </th>
-					<th>&nbsp; &nbsp; &nbsp; systemIP &nbsp; &nbsp; &nbsp; </th>
-					<th>&nbsp; &nbsp; &nbsp; systemDNS &nbsp; &nbsp; &nbsp; </th>
-					<th>&nbsp; &nbsp; &nbsp; systemPort &nbsp; &nbsp; &nbsp; </th>
-					<th>&nbsp; &nbsp; &nbsp; systemMAC &nbsp; &nbsp; &nbsp; </th>
-				</tr>
-				<%					
-				while (rs.next()) {
-					out.println("<tr>");
-						// Check box for Primary Key
-						out.println("<td><input type=\"checkbox\" name=\"" + rs.getString(1) + "\" />");
-						out.println("</td>");
-
-						// Skip past foreign key
-
-						// Print systemIP
-						out.println("<td>");
-						out.println(rs.getString(3));
-						out.println("</td>");
-
-						// Print systemDNS
-						out.println("<td>");
-						out.println(rs.getString(4));
-						out.println("</td>");
-
-						// Print systemPort
-						out.println("<td>");
-						out.println(rs.getString(5));
-						out.println("</td>");
-
-						// Print systemMAC
-						out.println("<td>");
-						out.println(rs.getString(6));
-						out.println("</td>");
-					out.println("</tr>");
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
+			%>
+			<tr>
+				<th>&nbsp; &nbsp; &nbsp; Select Record &nbsp; &nbsp; &nbsp; </th>
+				<th>&nbsp; &nbsp; &nbsp; computerIP &nbsp; &nbsp; &nbsp; </th>
+				<th>&nbsp; &nbsp; &nbsp; networkId &nbsp; &nbsp; &nbsp; </th>
+				<th>&nbsp; &nbsp; &nbsp; computerPort &nbsp; &nbsp; &nbsp; </th>
+				<th>&nbsp; &nbsp; &nbsp; computerMAC &nbsp; &nbsp; &nbsp; </th>
+			</tr>
+			<%
+			for(ComputerHelper ch: results){
+				out.println("<tr>");
+					// Check box for Primary Key (ComputerId)
+					out.println("<td><input type=\"checkbox\" name=\"" + ch.getComputerId() + "\" />");
+					out.println("</td><td>");
+					out.println(ch.getComputerIP());
+					out.println("</td><td>");
+					out.println(ch.getNetworkId());
+					out.println("</td><td>");
+					out.println(ch.getComputerPort());
+					out.println("</td><td>");
+					out.println(ch.getComputerMAC());
+					out.println("</td>");
+				out.println("</tr>");
 			}
-			DAO.close();	// Clean up, close the db connection
 	%>
 	</table>
 	<p>
