@@ -16,18 +16,13 @@
 	<form method="GET" action='ComputerController' name="listall">
 	<table border="1">
 	<%
-			int currUserId = (Integer)session.getAttribute("userId");
-			// Check if invalid user
-			if(currUserId<1){
-				response.sendRedirect("index.jsp"); // redirect to index.jsp
-			}
-	
 			ComputerDAO computerDao = new ComputerDAO();
-			List<ComputerHelper> results = computerDao.selectAllComputersForUser(currUserId);
+			List<ComputerHelper> results = computerDao.selectAllComputers();
 	
 			%>
 			<tr>
 				<th>&nbsp; &nbsp; &nbsp; Select Record &nbsp; &nbsp; &nbsp; </th>
+				<th>&nbsp; &nbsp; &nbsp; userId &nbsp; &nbsp; &nbsp; </th>
 				<th>&nbsp; &nbsp; &nbsp; computerIP &nbsp; &nbsp; &nbsp; </th>
 				<th>&nbsp; &nbsp; &nbsp; networkId &nbsp; &nbsp; &nbsp; </th>
 				<th>&nbsp; &nbsp; &nbsp; computerPort &nbsp; &nbsp; &nbsp; </th>
@@ -38,6 +33,8 @@
 				out.println("<tr>");
 					// Check box for Primary Key (ComputerId)
 					out.println("<td><input type=\"checkbox\" name=\"" + ch.getComputerId() + "\" />");
+					out.println("</td><td>");
+					out.println(ch.getUserId());
 					out.println("</td><td>");
 					out.println(ch.getComputerIP());
 					out.println("</td><td>");

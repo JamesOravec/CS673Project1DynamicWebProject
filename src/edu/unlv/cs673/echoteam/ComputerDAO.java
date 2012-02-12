@@ -1,6 +1,8 @@
 package edu.unlv.cs673.echoteam;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -49,11 +51,20 @@ public class ComputerDAO {
 	}
 	
 	@SuppressWarnings({ "rawtypes" })
-	public List selectAllComputersForUser() {
+	public List selectAllComputersForUser(int userId) {
 		List results = new ArrayList<ComputerHelper>();
+		@SuppressWarnings("unused")
 		DAO myDao = new DAO();
-		ResultSet rs = myDao.readQuery("SELECT computerId, userId, networkId, computerIP, computerPort, computerMAC FROM echosystems WHERE userId=?;");
-		
+		String query = "SELECT computerId, userId, networkId, computerIP, computerPort, computerMAC FROM computers WHERE userId=?;";
+		PreparedStatement p = null;
+		ResultSet rs = null;
+		try {
+			p = DAO.con.prepareStatement(query);
+			p.setString(1, "" + userId);
+			rs = p.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}		
 		results = buildResultList(rs);
 		DAO.close();	// Clean up, close the db connection		
 
