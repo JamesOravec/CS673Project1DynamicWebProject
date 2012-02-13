@@ -55,7 +55,7 @@ public class ComputerDAO {
 					if(rs.getString(4)==null){
 						computerIP = "-1";
 					}else{
-						computerIP = rs.getString(5);
+						computerIP = rs.getString(4);
 					}
 					
 					int computerPort;

@@ -16,8 +16,6 @@ package com.jamesoravec.samplecode.examples.hibernate;
 import java.io.*;
 import java.net.*;
 import com.jamesoravec.samplecode.examples.hibernate.ClientServerConstants;	// In case we change the package when integrating
-import com.sun.xml.internal.bind.v2.TODO;
-
 
 public class Requestor{
 	Socket requestSocket = null;
@@ -32,15 +30,13 @@ public class Requestor{
 	 * Constructor. 
 	 * 		Gets the server and port info from a property file.
 	 */
-	Requestor(){
-		
-	}
+	public Requestor() {}
 
 	/**
 	 * This is the logic which will connect to the provider to
 	 * request that it hibernate itself.
 	 */
-	void run(String serverUrl, int port) {
+	public void run(String serverUrl, int port) {
 		try{
 			//1. creating a socket to connect to the server
 			// TODO: Pull computer
@@ -86,7 +82,7 @@ public class Requestor{
 	 * 
 	 * @param msg
 	 */
-	void sendMessage(String msg) {
+	public void sendMessage(String msg) {
 		try {
 			out.writeObject(msg);
 			out.flush();
@@ -96,13 +92,13 @@ public class Requestor{
 		}
 	}
 
-	public static void main(String args[]) {
-
-		// TODO: Pull user info from db, and interate through each system that needs to sleep.
-		// TODO: The following two lines will need to be pulled from the db.
-		serverUrl = "localhost";
-		port = 2004;
-		Requestor client = new Requestor();
-		client.run(serverUrl, port);
-	}
+//	public static void main(String args[]) {
+//
+//		// TODO: Pull user info from db, and interate through each system that needs to sleep.
+//		// TODO: The following two lines will need to be pulled from the db.
+//		serverUrl = "localhost";
+//		port = 2004;
+//		Requestor client = new Requestor();
+//		client.run(serverUrl, port);
+//	}
 }

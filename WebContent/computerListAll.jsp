@@ -56,7 +56,7 @@
 				out.println("</td><td>");
 				out.println(computerMAC);
 				out.println("</td><td>");
-				out.println("<a href=\"\">Send Sleep Command</a>");
+				out.println("<a href=\"sleepSend.jsp?host=" + computerIP + "&port=" + computerPort + "\">Send Sleep Command</a>");
 				out.println("</td><td>");
 				out.println("<a href=\"magicPacketSend.jsp?host=" + computerIP + "&macAddress=" + computerMAC + "\">Send WoL Packet</a>");
 				out.println("</td>");
