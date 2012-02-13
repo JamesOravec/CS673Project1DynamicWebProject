@@ -1,0 +1,13 @@
+User Cases:
+	Add user
+	Edit user
+	Delete user
+	Add computer
+	Edit computer
+	Delete Computer
+	Server Send WoL Packet
+	Server Send Sleep Command
+
+	Android Enter Perimeter Send Wake
+	Android Exit Perimeter Send Sleep
+	

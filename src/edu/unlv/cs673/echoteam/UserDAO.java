@@ -18,7 +18,7 @@ public class UserDAO {
 	public List<UserHelper> selectAllUsers() {
 		List<UserHelper> results = new ArrayList<UserHelper>();
 		DAO myDao = new DAO();
-		String query = "SELECT userId, userName, userPassword FROM users;";
+		String query = "SELECT userId, userName, userPassword, userEmail FROM users;";
 		ResultSet rs = myDao.readQuery(query);
 		results = buildResultList(rs);
 		DAO.close();	// Clean up, close the db connection		
@@ -36,8 +36,9 @@ public class UserDAO {
 					int userId = Integer.parseInt(rs.getString(1));
 					String userName = rs.getString(2);
 					String userPassword = rs.getString(3);
+					String userEmail = rs.getString(4);
 
-					results.add(new UserHelper(userId, userName, userPassword));
+					results.add(new UserHelper(userId, userName, userPassword, userEmail));
 				}
 			}
 		} catch (SQLException e) {
@@ -47,16 +48,16 @@ public class UserDAO {
 		return results;
 	}
 	
-	public void insertUser(String userName, String userPassword) throws SQLException {
+	public void insertUser(String userName, String userPassword, String userEmail) throws SQLException {
 		@SuppressWarnings("unused")
 		DAO myDao = new DAO();
 		String query = "";
-		query = "INSERT INTO users (userName, userPassword) Values (?, ?);";
+		query = "INSERT INTO users (userName, userPassword, userEmail) Values (?, ?, ?);";
 		PreparedStatement p = null;
 		p = DAO.con.prepareStatement(query);
 		p.setString(1, userName);
 		p.setString(2, userPassword);
-		System.out.println(p.toString());
+		p.setString(3, userEmail);
 		p.execute();
 		query = "commit;";
 		p = DAO.con.prepareStatement(query);
@@ -76,5 +77,32 @@ public class UserDAO {
 	
 	public void updateComptuerById() {
 		// TODO Auto-generated method stub
+	}
+	
+	public String validUserPassword(String userName, String userPassword){
+		@SuppressWarnings("unused")
+		DAO myDao = new DAO();
+		String query = "";
+		query = "SELECT userId FROM users WHERE userName=? AND userPassword = ?;";
+		PreparedStatement p = null;
+		try {
+			p = DAO.con.prepareStatement(query);
+			p.setString(1, userName);
+			p.setString(2, userPassword);
+			ResultSet rs;
+			rs = p.executeQuery();
+			
+			if(rs.next()){
+				String id = rs.getString(1);
+				return id;	// has matching record
+			} else {
+				return "";	// empty record set.
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return "";		// empty record set.
+		} finally {
+			DAO.close();
+		}
 	}
 }

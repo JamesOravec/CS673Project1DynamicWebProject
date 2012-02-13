@@ -4,7 +4,8 @@
 create TABLE users(
 	userId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	userName VARCHAR(100),
-	userPassword VARCHAR(100)
+	userPassword VARCHAR(100),
+	userEmail VARCHAR(100)
 );
 commit;
 
@@ -34,7 +35,7 @@ commit;
 
 /*
 -- Sample Input for testing.
-INSERT INTO users (`userName`, `userPassword`) VALUES ('root', 'password');
+INSERT INTO users (`userName`, `userPassword`, `userEmail`) VALUES ('root', 'password', 'james.oravec@gmail.com');
 commit;
 
 INSERT INTO computers (userId, networkId, computerIP, computerPort, computerMAC) Values (1, 1, '192.168.1.111','1111','00:24:1D:1C:D1:1B');

@@ -33,21 +33,34 @@
 		</tr>
 		<%
 		for(ComputerHelper ch: results){
+			
+			String computerId = "" + ch.getComputerId();
+			String computerIP = "" + ch.getComputerIP();
+			if(computerIP==null){
+				computerIP="";
+			}
+			String networkId = "" + ch.getNetworkId();
+			String computerPort = "" + ch.getComputerPort();
+			String computerMAC = ch.getComputerMAC();
+			if(computerMAC==null){
+				computerMAC="";
+			}
+			
 			out.println("<tr>");
 				// Check box for Primary Key (ComputerId)
-				out.println("<td><input type=\"checkbox\" name=\"" + ch.getComputerId() + "\" />");
+				out.println("<td><input type=\"checkbox\" name=\"" + computerId + "\" />");
 				out.println("</td><td>");
-				out.println(ch.getComputerIP());
+				out.println(computerIP);
 				out.println("</td><td>");
-				out.println(ch.getNetworkId());
+				out.println(networkId);
 				out.println("</td><td>");
-				out.println(ch.getComputerPort());
+				out.println(computerPort);
 				out.println("</td><td>");
-				out.println(ch.getComputerMAC());
+				out.println(computerMAC);
 				out.println("</td><td>");
 				out.println("<a href=\"\">Send Sleep Command</a>");
 				out.println("</td><td>");
-				out.println("<a href=\"magicPacketSend.jsp?host=" + ch.getComputerIP() + "&macAddress=" + ch.getComputerMAC() + "\">Send WoL Packet</a>");
+				out.println("<a href=\"magicPacketSend.jsp?host=" + computerIP + "&macAddress=" + computerMAC + "\">Send WoL Packet</a>");
 				out.println("</td>");
 			out.println("</tr>");
 		}

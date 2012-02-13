@@ -33,12 +33,47 @@ public class ComputerDAO {
 			if (rs != null) {
 				// Build results
 				while (rs.next()) {
-					int computerId = Integer.parseInt(rs.getString(1));
-					int userId = Integer.parseInt(rs.getString(2));
-					int networkId = Integer.parseInt(rs.getString(3));
-					String computerIP = rs.getString(4);
-					int computerPort = Integer.parseInt(rs.getString(5));
-					String computerMAC = rs.getString(6);
+					int computerId;
+					if(rs.getString(1)==null){
+						computerId = -1;
+					}else{
+						computerId = Integer.parseInt(rs.getString(1));
+					}
+					
+					int userId;
+					if(rs.getString(2)==null){
+						userId = -1;
+					}else{
+						userId = Integer.parseInt(rs.getString(2));
+					}
+					
+					int networkId;
+					if(rs.getString(3)==null){
+						networkId = -1;
+					}else{
+						networkId = Integer.parseInt(rs.getString(3));
+					}
+					
+					String computerIP;
+					if(rs.getString(4)==null){
+						computerIP = "-1";
+					}else{
+						computerIP = rs.getString(5);
+					}
+					
+					int computerPort;
+					if(rs.getString(5)==null){
+						computerPort = -1;
+					}else{
+						computerPort = Integer.parseInt(rs.getString(5));
+					}
+					
+					String computerMAC;
+					if(rs.getString(6)==null){
+						computerMAC = "-1";
+					}else{
+						computerMAC = rs.getString(6);
+					}
 
 					results.add(new ComputerHelper(computerId, userId, networkId, computerIP, computerPort, computerMAC));
 				}
@@ -71,18 +106,17 @@ public class ComputerDAO {
 		return results;
 	}
 	
-	public void insertComputer(String userId, String systemIP, String systemDNS, String systemPort, String systemMAC) throws SQLException {
+	public void insertComputer(String userId, String computerIP, String computerPort, String computerMAC) throws SQLException {
 		@SuppressWarnings("unused")
 		DAO myDao = new DAO();
 		String query = "";
-		query = "INSERT INTO computers (userId, computerIP, computerPort, computerMAC) Values (?, ?, ?, ?, ?);";
+		query = "INSERT INTO computers (userId, computerIP, computerPort, computerMAC) Values (?, ?, ?, ?);";
 		PreparedStatement p = null;
 		p = DAO.con.prepareStatement(query);
 		p.setString(1, userId);
-		p.setString(2, systemIP);
-		p.setString(3, systemDNS);
-		p.setString(4, systemPort);
-		p.setString(5, systemMAC);
+		p.setString(2, computerIP);
+		p.setString(3, computerPort);
+		p.setString(4, computerMAC);
 		System.out.println(p.toString());
 		p.execute();
 		query = "commit;";

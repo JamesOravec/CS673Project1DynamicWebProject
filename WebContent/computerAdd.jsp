@@ -16,41 +16,32 @@
 		try {
 			// Get information that was posted from signup.jsp
 			String userId = Integer.toString(((Integer)session.getAttribute("userId")));
-			String systemIP = request.getParameter("systemIP");
-			String systemDNS = request.getParameter("systemDNS");
-			String systemPort = request.getParameter("systemPort");
-			String systemMAC = request.getParameter("systemMAC");
+			String computerIP = request.getParameter("computerIP");
+			String computerPort = request.getParameter("computerPort");
+			String computerMAC = request.getParameter("computerMAC");
 
 			// Check for nulls and replace with empty strings
-			if(systemIP==null){
-				systemIP="";
+			if(computerIP==null){
+				computerIP="";
 			}
-			if(systemDNS==null){
-				systemDNS="";
+			if(computerPort==null){
+				computerPort="";
 			}
-			if(systemPort==null){
-				systemPort="";
-			}
-			if(systemMAC==null){
-				systemMAC="";
+			if(computerMAC==null){
+				computerMAC="";
 			}
 			
 			ComputerDAO myDao = new ComputerDAO();
-			myDao.insertComputer(userId, systemIP, systemDNS, systemPort, systemMAC);			 
+			myDao.insertComputer(userId, computerIP, computerPort, computerMAC);			 
 
-			// Post Successful Add
-			%>
-			<b>Computer Added Successfully</b><BR>
-			<%
+			out.println("<center><b>Computer Added Successfully</b><BR></center>");
 		} catch (Exception e) {
-			%>
-			<b>Exception occured when trying to add user.</b><BR>
-			<%
+			out.println("<center><b>Exception occured when trying to add computer.</b><BR></center>");
 			e.printStackTrace();
 		}
 		// Clear add computer marker
 		session.setAttribute("addComputerFlag", 0);
-	}else{
+	} else { 
 		// Set flag showing want to add a computer.
 		session.setAttribute("addComputerFlag", 1);
 		
@@ -69,25 +60,19 @@
 		      </tr>
 		      <tr>
 		        <td width="50%" align="center">
-		          <p align="center">systemIP</td>
+		          <p align="center">computerIP</td>
 		        <td width="50%" align="center">
-		          <p align="center"><input type="text" name="systemIP" size="20"></td>
+		          <p align="center"><input type="text" name="computerIP" size="20"></td>
 		      </tr>
 		      <tr>
 		        <td width="50%" align="center">
-		          <p align="center">systemDNS</td>
+		          <p align="center">computerPort</td>
 		        <td width="50%" align="center">
-		          <p align="center"><input type="text" name="systemDNS" size="20"></td>
+		          <p align="center"><input type="text" name="computerPort" size="20"></td>
 		      </tr>
 		      <tr>
-		        <td width="50%" align="center">
-		          <p align="center">systemPort</td>
-		        <td width="50%" align="center">
-		          <p align="center"><input type="text" name="systemPort" size="20"></td>
-		      </tr>
-		      <tr>
-		        <td width="50%" align="center">systemMAC</td>
-		        <td width="50%" align="center"><input type="text" name="systemMAC" size="20"></td>
+		        <td width="50%" align="center">computerMAC</td>
+		        <td width="50%" align="center"><input type="text" name="computerMAC" size="20"></td>
 		      </tr>
 		    </table>
 		    </center>
@@ -97,7 +82,6 @@
 		<%
 	}
 %>
-
 <br><br>
 <a href="computerListAll.jsp">Return to Computer List</a>
 </center>
