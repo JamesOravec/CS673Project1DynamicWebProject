@@ -1,12 +1,9 @@
 package edu.unlv.cs673.echoteam;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import edu.unlv.cs673.echoteam.helpers.ComputerHelper;
@@ -26,7 +23,7 @@ public class ComputerDAO {
 		return results;
 	}
 
-	@SuppressWarnings({ "unchecked" })
+	@SuppressWarnings({ })
 	private List<ComputerHelper> buildResultList(ResultSet rs) {
 		List<ComputerHelper> results = new ArrayList<ComputerHelper>();
 		try {
@@ -135,8 +132,28 @@ public class ComputerDAO {
 		DAO.close();
 	}
 	
-	public void updateComptuerById() {
-		// TODO Auto-generated method stub
+	public void updateComputers(String select[], String IPs[], String Ports[], String MACs[]) {
+		@SuppressWarnings("unused")
+		DAO myDao = new DAO();
+		String query = "UPDATE computers SET computerIP = ?, computerPort = ?, computerMAC = ? WHERE computerId = ?";
+		
+		PreparedStatement p;
+		int id = 0;
+		try {
+			p = DAO.con.prepareStatement(query);
+			if (select != null) {
+				for (int i = 0; i < select.length; i++) {
+					id = Integer.valueOf(select[i]);
+					p.setString(1, IPs[i]);
+					p.setString(2, Ports[i]);
+					p.setString(3, MACs[i]);
+					p.setInt(4, id);
+					p.execute();
+				}
+				DAO.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
-	
 }

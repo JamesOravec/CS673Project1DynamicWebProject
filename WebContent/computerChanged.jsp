@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ page
-	import="edu.unlv.cs673.echoteam.DAO,java.io.PrintWriter,java.sql.*,javax.persistence.*"%>
+<%@ page import="edu.unlv.cs673.echoteam.ComputerDAO,
+					edu.unlv.cs673.echoteam.helpers.ComputerHelper,
+					java.util.List,
+					java.util.ArrayList,
+					java.io.PrintWriter,
+					java.sql.ResultSet,
+					java.sql.SQLException" %>
+	
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <jsp:include page="header.inc"></jsp:include>
 <jsp:include page="verifyLogin.jsp"></jsp:include>
@@ -14,33 +20,14 @@
 </head>
 <body>
 	<%
-		DAO myDao = new DAO();
-		String query = "UPDATE echosystems set systemIP = ?, systemDNS = ?, systemPort = ?, systemMAC = ? WHERE systemId = ?";
-		String select[] = request.getParameterValues("systemId");
-		String IPs[] = request.getParameterValues("systemIP");
-		String DNSs[] = request.getParameterValues("systemDNS");
-		String Ports[] = request.getParameterValues("systemPort");
-		String MACs[] = request.getParameterValues("systemMAC");
-		PreparedStatement p;
-		int id = 0;
-		try {
-			p = DAO.con.prepareStatement(query);
-			if (select != null) {
-				for (int i = 0; i < select.length; i++) {
-					id = Integer.valueOf(select[i]);
-					p.setString(1, IPs[i]);
-					p.setString(2, DNSs[i]);
-					p.setString(3, Ports[i]);
-					p.setString(4, MACs[i]);
-					p.setInt(5, id);
-					p.execute();
-				}
-
-				DAO.close();
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		ComputerDAO computerDao = new ComputerDAO();
+		
+		String select[] = request.getParameterValues("computerId");
+		String IPs[] = request.getParameterValues("computerIP");
+		String Ports[] = request.getParameterValues("computerPort");
+		String MACs[] = request.getParameterValues("computerMAC");
+		
+		computerDao.updateComputers(select, IPs, Ports, MACs);
 	%>
 	<center>
 	<b>Systems(s) Updated Successfully</b><BR> <a href="computerListAll.jsp">Return</a>

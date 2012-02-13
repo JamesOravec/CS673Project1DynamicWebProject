@@ -1,7 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ page
-	import="edu.unlv.cs673.echoteam.DAO,java.io.PrintWriter,java.sql.*,javax.persistence.*"%>
+<%@ page import="edu.unlv.cs673.echoteam.UserDAO,
+					edu.unlv.cs673.echoteam.helpers.UserHelper,
+					java.util.List,
+					java.util.ArrayList,
+					java.io.PrintWriter,
+					java.sql.*
+					,javax.persistence.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <body>
@@ -14,36 +19,25 @@
 			<tr>
 				<th>UserName</th>
 				<th>UserPassword</th>
+				<th>UserEmail</th>
 			</tr>
 			<%
-				DAO myDao = new DAO();
-				int id = 0;
-				String select[] = request.getParameterValues("UserId");
-				ResultSet rs = myDao.readQuery("SELECT * FROM echousers;");
-
-				try {
-					while (rs.next()) {
-
-						for (int i = 0; i < select.length; i++) {
-							id = Integer.valueOf(select[i]);
-							if (Integer.valueOf(rs.getString(1)) == id) {
-								out.println("<tr>");
-								out.println("<td><input type=\"text\" name=\"Username\" value=\""
-										+ rs.getString(2) + "\" />");
-								out.println("</td>");
-								out.println("<td><input type=\"text\" name=\"Password\" value=\""
-										+ rs.getString(3) + "\" />");
-								out.println("</td>");
-								out.println("</tr>");
-								out.println("<input type=\"hidden\" name=\"UserId\" value=\""
-										+ id + "\" />");
-							}
-
-						}
+				int currUserId = (Integer) session.getAttribute("userId");
+				UserDAO userDao = new UserDAO();
+				List<UserHelper> results = userDao.selectAllUsers();
+	
+				int id = Integer.parseInt(request.getParameter("userId"));
+	
+				for (int j = 0; j < results.size(); j++) {
+					UserHelper uh = results.get(j);
+					if (Integer.valueOf(uh.getUserId()) == id) {
+						out.println("<tr>");
+						out.println("<td><input type=\"text\" name=\"userName\" value=\"" + uh.getUserName() + "\" /></td>");
+						out.println("<td><input type=\"text\" name=\"userPassword\" value=\"" + uh.getUserPassword() + "\" /></td>");
+						out.println("<td><input type=\"text\" name=\"userEmail\" value=\"" + uh.getUserEmail() + "\" /></td>");
+						out.println("</tr>");
+						out.println("<input type=\"hidden\" name=\"userId\" value=\"" + id + "\" />");
 					}
-
-				} catch (SQLException e) {
-					e.printStackTrace();
 				}
 			%>
 
@@ -52,10 +46,6 @@
 	</form>
 	<a href="userListAll.jsp">Return</a>
 </center>
-<%
-	DAO.close();
-%>
-
 <jsp:include page="footer.inc"></jsp:include>
 </body>
 </html>

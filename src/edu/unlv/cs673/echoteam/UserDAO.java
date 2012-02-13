@@ -1,13 +1,11 @@
 package edu.unlv.cs673.echoteam;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.unlv.cs673.echoteam.helpers.ComputerHelper;
 import edu.unlv.cs673.echoteam.helpers.UserHelper;
 
 public class UserDAO {
@@ -26,7 +24,7 @@ public class UserDAO {
 		return results;
 	}
 
-	@SuppressWarnings({ "unchecked" })
+	@SuppressWarnings({ })
 	private List<UserHelper> buildResultList(ResultSet rs) {
 		List<UserHelper> results = new ArrayList<UserHelper>();
 		try {
@@ -75,8 +73,27 @@ public class UserDAO {
 		DAO.close();
 	}
 	
-	public void updateComptuerById() {
-		// TODO Auto-generated method stub
+	public void updateComptuerById(String select[], String usernames[], String passwords[], String emails[]) {
+		DAO myDao = new DAO();
+		String query = "UPDATE users set userName = ?, userPassword = ?, userEmail = ? WHERE userID = ?";
+		PreparedStatement p;
+		int id = 0;
+		try {
+			p = DAO.con.prepareStatement(query);
+			if (usernames != null) {
+				for (int i = 0; i < usernames.length; i++) {
+					id = Integer.valueOf(select[i]);
+					p.setString(1, usernames[i]);
+					p.setString(2, passwords[i]);
+					p.setString(3, emails[i]);
+					p.setInt(4, id);
+					p.execute();
+				}
+				DAO.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public String validUserPassword(String userName, String userPassword){
